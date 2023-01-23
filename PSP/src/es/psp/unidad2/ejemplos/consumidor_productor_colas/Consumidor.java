@@ -4,22 +4,22 @@ import java.util.concurrent.BlockingQueue;
 
 public class Consumidor implements Runnable{
 
-private BlockingQueue<Mensaje> queue;
+private BlockingQueue<Mensaje> cola;
 private String nombre;
     
     public Consumidor(BlockingQueue<Mensaje> q, String nombre){
     	this.nombre=nombre;
-        this.queue=q;
+        this.cola=q;
     }
 
     @Override
     public void run() {
         try{
-        	Mensaje msg;
-            //consuming messages until exit message is received
-            while((msg = queue.take()).getMsg() !="exit"){
+        	Mensaje msj;
+            //Lee mensajes hasta que recibe el mensaje exit
+            while((msj = cola.take()).getMsj() !="exit"){
             Thread.sleep(10);
-            System.out.println("El hilo "+nombre+" cosume "+msg.getMsg());
+            System.out.println("El hilo "+nombre+" consume "+msj.getMsj());
             }
         }catch(InterruptedException e) {
             e.printStackTrace();

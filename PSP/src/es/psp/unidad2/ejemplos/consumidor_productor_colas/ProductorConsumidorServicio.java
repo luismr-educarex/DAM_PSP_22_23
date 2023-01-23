@@ -6,22 +6,18 @@ import java.util.concurrent.BlockingQueue;
 public class ProductorConsumidorServicio {
 
     public static void main(String[] args) {
-        //Creating BlockingQueue of size 10
+        //Crearmos una BlockingQueue de tamaño 10 mensajes
         BlockingQueue<Mensaje> queue = new ArrayBlockingQueue<>(10);
         Productor producer = new Productor(queue);
         Consumidor consumer = new Consumidor(queue,"consumidor1");
         Consumidor consumer2 = new Consumidor(queue,"consumidor2");
-        //starting producer to produce messages in queue
+        //empieza el productor a producir mensajes en la cola
         new Thread(producer).start();
-        //starting consumer to consume messages from queue
-        //Thread hilo_consumidor = new Thread(consumer);
-        //hilo_consumidor.setName("consumidor1");
-        //Thread hilo_consumidor2 = new Thread(consumer2);
-        //hilo_consumidor2.setName("consumidor2");
+        //empieza el consumidor a consumir mensajes de la cola
+        
         new Thread(consumer).start();
         new Thread(consumer2).start();
-        //hilo_consumidor.start();
-        //hilo_consumidor2.start();
+        
         System.out.println("Productor y consumidores han empezado a ejecutarse");
     }
 
