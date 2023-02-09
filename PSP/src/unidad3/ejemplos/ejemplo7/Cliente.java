@@ -12,32 +12,29 @@ public class Cliente {
     {
         Scanner sc = new Scanner(System.in);
   
-        // Step 1:Create the socket object for
-        // carrying the data.
+        // PASO 1:Crear el objeto socket para colocar los datos
         DatagramSocket ds = new DatagramSocket();
   
         InetAddress ip = InetAddress.getLocalHost();
         byte buf[] = null;
   
-        // loop while user not enters "bye"
+        // bucle while hasta que el usuario introduzca "adios"
         while (true)
         {
             String inp = sc.nextLine();
   
-            // convert the String input into the byte array.
+            // Convertir el String de entrada un array de bytes.
             buf = inp.getBytes();
   
-            // Step 2 : Create the datagramPacket for sending
-            // the data.
+            // PASO 2: Crear el datagramPacket para enviar los datos
             DatagramPacket DpSend =
                   new DatagramPacket(buf, buf.length, ip, 1234);
   
-            // Step 3 : invoke the send call to actually send
-            // the data.
+            // PASO 3: usar la función send para actualizar el envío de datos
             ds.send(DpSend);
   
-            // break the loop if user enters "bye"
-            if (inp.equals("bye"))
+            // terminar el bucle si se ha introducido "adios"
+            if (inp.equals("adios"))
                 break;
         }
     }

@@ -8,48 +8,47 @@ public class DataSocketServer
 {
 	public static void main(String[] args) throws IOException
     {
-        // Step 1 : Create a socket to listen at port 1234
+        // PASO 1: Crear un socket para escuchar en el puerto 1234
         DatagramSocket ds = new DatagramSocket(1234);
-        byte[] receive = new byte[65535];
+        byte[] recepcion = new byte[65535]; // buffer
   
-        DatagramPacket DpReceive = null;
+        DatagramPacket DpRececpcion = null;
         while (true)
         {
   
-            // Step 2 : create a DatgramPacket to receive the data.
-            DpReceive = new DatagramPacket(receive, receive.length);
+            // Paso 2: crear un a DatgramPacket para recibir los datos.
+            DpRececpcion = new DatagramPacket(recepcion, recepcion.length);
   
-            // Step 3 : revieve the data in byte buffer.
-            ds.receive(DpReceive);
+            // Paso 3: recibir los datos del buffer.
+            ds.receive(DpRececpcion);
   
-            System.out.println("Client:-" + data(receive));
+            System.out.println("Cliente:-" + convertirACadena(recepcion));
   
-            // Exit the server if the client sends "bye"
-            if (data(receive).toString().equals("bye"))
+            // Termina el servidor si el cliente envía "adios"
+            if (convertirACadena(recepcion).toString().equals("adios"))
             {
-                System.out.println("Client sent bye.....EXITING");
+                System.out.println("Cliente enviado adios......SALIENDO");
                 break;
             }
   
-            // Clear the buffer after every message.
-            receive = new byte[65535];
+            // Limpiamos el buffer despés de cada mensaje.
+            recepcion = new byte[65535];
         }
     }
   
-    // A utility method to convert the byte array
-    // data into a string representation.
-    public static StringBuilder data(byte[] a)
+    // Método para convertir el array byte de datos a una cadena
+    public static StringBuilder convertirACadena(byte[] a)
     {
         if (a == null)
             return null;
-        StringBuilder ret = new StringBuilder();
+        StringBuilder resultado = new StringBuilder();
         int i = 0;
         while (a[i] != 0)
         {
-            ret.append((char) a[i]);
+        	resultado.append((char) a[i]);
             i++;
         }
-        return ret;
+        return resultado;
     }
 }
    
