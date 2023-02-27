@@ -6,7 +6,14 @@ import java.math.BigInteger;
 import java.nio.file.Files;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
-
+/**
+ * Esta clase debe ejecutarse (dispone de un método main) para realizar la validación de las credenciales.
+ * Solicita información del identificador y de la contreña del usuario, genera el resumen a través del método
+ * getDigest de la clase HASHManager, recupera el resumen almacenado durante le registro y compara si ambos
+ * resúmenes (el generado y el recuperado del fichero) son iguales mediante el método compararResumenes de la 
+ * clsase HASHManager. 
+ * Por último, muestra los dos resúmenes convertidos a formato hexadecimal mediante el método mostrarResumenHexadecimal
+ */
 public class ValidadorCredenciales {
 	
 	private static final String ENCODING_TYPE = "UTF-8";

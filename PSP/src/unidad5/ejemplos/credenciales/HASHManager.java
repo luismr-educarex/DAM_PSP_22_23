@@ -2,7 +2,12 @@ package unidad5.ejemplos.credenciales;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+/**
+ * Clase encargada de las operaciones relacionadas con los resúmenes. Proporciona dos métodos:
+ * - getDigest. Obtiene el resumen del bloque de bytes proporcionado. Utiliza el algoritmo HASH
+ * 				indicado en la constante ALGORITMO.
+ * - comprarResumenes. Compara dos arrays de bytes (resúmenes) indicando si son o no iguales.
+ */
 public class HASHManager {
 
 	private static final String ALGORITMO = "SHA-256";
