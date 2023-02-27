@@ -43,7 +43,7 @@ public class ClavesManager {
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA") ;
 		EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(bytesClavePublica);
 		PublicKey clavePublica = keyFactory.generatePublic(publicKeySpec);
-		return clavePublica;
+		return clavePublica; 
 	}	
 	
 	public static PrivateKey getClavePrivada() throws Exception {
