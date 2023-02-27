@@ -25,6 +25,7 @@ public class AESSimpleManager {
 		Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 		
 		cipher.init(Cipher.ENCRYPT_MODE, key);
+		//CIFRADO
 		byte [] cipherText = cipher.doFinal(textoEnClaro.getBytes());
 		
 		return Base64.getEncoder().encodeToString(cipherText);
@@ -35,6 +36,7 @@ public class AESSimpleManager {
 		Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 		
 		cipher.init(cipher.DECRYPT_MODE,key);
+		//DESCIFRADO
 		byte[] textoPlano = cipher.doFinal(Base64.getDecoder().decode(textoCifrado));
 		
 		return new String(textoPlano);
